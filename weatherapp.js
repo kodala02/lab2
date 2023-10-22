@@ -23,7 +23,7 @@ app.listen(port, () => {
 const weatherApiOptions = {
     method: 'GET',
     headers: {
-        'X-RapidAPI-Key': '9b144ba584msh39799d79b268195p12f441jsnb0814c1a9fdb',
+        'X-RapidAPI-Key': '2ef31630-70d2-11ee-83c7-bdd846f2d981',
         'X-RapidAPI-Host': 'open-weather13.p.rapidapi.com'
     }
 };

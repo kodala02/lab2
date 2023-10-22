@@ -7,13 +7,18 @@
 - Confirm that the API key is still valid and has not expired or been revoked.
 - Make sure your API key has the necessary permissions to access the requested data from the Tomorrow.io API.
 
-### 2. In this code, the design choices are minimal, and Bootstrap is used to structure the HTML elements and provide basic styling. The design choices are as follows:
+### 2. In this code, the design choices are minimal, and custom CSS styles have been used to structure the HTML elements and provide basic styling. The design choices are as follows:
 
-- Bootstrap is used for styling and layout, with Bootstrap classes positioning elements, creating the form, and styling buttons for a responsive and visually appealing design.
-- The title "Weather App" is centered in the middle of the page using the Bootstrap class `text-center`.
-- The latitude and longitude input fields are styled with Bootstrap's `form-control` class for a consistent and clean look.
-- The "Get Weather" button is styled as a primary button using `btn btn-primary`.
-- The content is placed within a Bootstrap container (`container` class), adding margins and centering the content on the page.
+- The background color of the body is set to `#f0f0f0`.
+- The content is centered with `text-align: center` and has a margin of `0`.
+- The main container has a white background with padding, border-radius, and a box shadow for a clean look.
+- The title "Weather App" is styled with a font size of `28px` and a color of `#333`.
+- Paragraphs are styled with a font size of `18px` and a color of `#555`.
+- Form elements are centered within the container.
+- Labels are styled to be bold and have a margin.
+- Text input fields have a width of `100%`, padding, a font size of `16px`, and a border.
+- The "Get Weather" button has a background color of `#007BFF`, white text, and a border radius. It changes color on hover.
+- Messages for loading, temperature, and weather description are styled with colors and font weights.
 
 ## How to Use the Weather App
 
@@ -41,7 +46,8 @@ To deploy and run this app on Heroku, follow these steps:
 
 ## Future Improvements
 
-- In the future, we plan to enhance the design of the app by customizing the CSS.
+- In the future, we plan to enhance the design of the app by customizing the CSS further.
 - We may add more weather-related information and forecasts.
 - User authentication and data storage for location preferences could be considered as a feature.
 
+The code will be hosted on [Render.com](https://render.com).
