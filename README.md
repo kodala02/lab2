@@ -32,17 +32,7 @@
 This Weather App code is hosted on [GitHub](git@github.com:kodala02/lab2.git).
 This Weather App code is deployed on [Heroku](git@github.com:kodala02/lab2.git).
 
-## Deploy and Run on Heroku
-
-To deploy and run this app on Heroku, follow these steps:
-
-1. Create a Heroku account if you don't have one.
-2. Install the Heroku CLI.
-3. Log in to your Heroku account using `heroku login`.
-4. Create a `Procfile` in your project directory specifying how to run your app.
-5. Initialize a Git repository, commit your code, and create a Heroku app using `heroku create`.
-6. Push your code to Heroku with `git push heroku main`.
-7. Open your app in the browser with `heroku open`.
+## THe application was deployed on render.com
 
 ## Future Improvements
 
