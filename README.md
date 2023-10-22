@@ -30,7 +30,7 @@
 ## Repository Submission
 
 This Weather App code is hosted on [GitHub](git@github.com:kodala02/lab2.git).
-This Weather App code is deployed on [Heroku](git@github.com:kodala02/lab2.git).
+This Weather App code is deployed on [render.com](git@github.com:kodala02/lab2.git).
 
 ## THe application was deployed on render.com
 
