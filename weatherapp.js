@@ -1,54 +1,47 @@
 const express = require('express');
-const https = require('https');
+const axios = require('axios');
 const bodyParser = require('body-parser');
+const path = require('path'); // Add the 'path' module
 
 const app = express();
 const port = 8002;
 
+app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const apiKey = 'v9yd0hnuKEkBMM6XFGwvk053KnK8IADe';
+// Serve static files including your JavaScript file
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-app.post('/weather', (req, res) => {
-    const latitude = req.body.latitude;
-    const longitude = req.body.longitude;
-
-    const apiUrl = `https://api.tomorrow.io/v4/timelines?location=${latitude},${longitude}&fields=temperature&timesteps=1h&units=metric&apikey=${apiKey}`;
-
-    https.get(apiUrl, (response) => {
-        let data = '';
-
-        response.on('data', (chunk) => {
-            data += chunk;
-        });
-
-        response.on('end', () => {
-            if (response.statusCode === 200) {
-                const weatherData = JSON.parse(data);
-
-                const temperature = weatherData.data.timelines[0].intervals[0].values.temperature;
-                const humidity = weatherData.data.timelines[0].intervals[0].values.humidity;
-                const precipitationProbability = weatherData.data.timelines[0].intervals[0].values.precipitationProbability;
-                const weatherCode = weatherData.data.timelines[0].intervals[0].values.weatherCode;
-
-
-                res.send(`
-                    Temperature: ${temperature}°C<br>
-                    Humidity: ${humidity}%<br>
-                    Precipitation Probability: ${precipitationProbability}%<br>
-                    Weather Code: ${weatherCode}
-                `);
-            } else {
-                res.send('Error fetching weather data.');
-            }
-        });
-    });
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });
 
-app.listen(port, () => {
-    console.log(`Server is running on http://127.0.0.1:${port}`);
+const weatherApiOptions = {
+    method: 'GET',
+    headers: {
+        'X-RapidAPI-Key': '9b144ba584msh39799d79b268195p12f441jsnb0814c1a9fdb',
+        'X-RapidAPI-Host': 'open-weather13.p.rapidapi.com'
+    }
+};
+
+// Handle the POST request from the HTML form
+app.post('/get-weather', async (req, res) => {
+    const userCity = req.body.city; // Get the user-entered city from the form
+
+    // Modify the weatherApiOptions URL to include the user's city
+    weatherApiOptions.url = `https://open-weather13.p.rapidapi.com/city/${userCity}`;
+
+    try {
+        // Make the API request with the user-specified city
+        const response = await axios.request(weatherApiOptions);
+        const weatherData = response.data;
+        res.json(weatherData);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'An error occurred while fetching weather data.' });
+    }
 });
